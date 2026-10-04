@@ -1,0 +1,13 @@
+name: Build PSP EBOOT
+on: [push, workflow_dispatch]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: ghcr.io/pspdev/pspdev:latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: make
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Lamplighter-EBOOT
+          path: EBOOT.PBP
